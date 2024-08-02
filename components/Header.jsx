@@ -22,7 +22,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 const services = [
-    { name: 'Clipping Path Services', href: '#', },
+    { name: 'Clipping Path Services', href: '/clipping-path', },
     { name: 'Color Variants & Color Correction', href: '#', },
     { name: 'Drop Shadow Services', href: '#', },
     { name: 'Ghost Mannequin Services', href: '#', },
@@ -38,10 +38,10 @@ const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <header className="bg-slate-400">
-            <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+        <header>
+            <nav aria-label="Global" className="container mx-auto flex items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
-                    <Link href="#" className="-m-1.5 p-1.5">
+                    <Link href="/" className=" p-1.5">
                         <span className="sr-only">Your Company</span>
                         <Image
                             alt=""
@@ -61,7 +61,7 @@ const Header = () => {
                     </button>
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                    <Link href="#" className="text-sm font-semibold leading-6 text-white">
+                    <Link href="/" className="text-sm font-semibold leading-6 text-white">
                         Home
                     </Link>
                     <Popover className="relative">

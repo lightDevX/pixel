@@ -1,173 +1,195 @@
-import Image from "next/image";
-import Link from "next/link";
-import logo from "../assets/logo-icon.png";
+'use client'
+
+import logo from '@/assets/logo-icon.png'
+import {
+    Dialog,
+    DialogPanel,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Popover,
+    PopoverButton,
+    PopoverGroup,
+    PopoverPanel,
+} from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import {
+    Bars3Icon,
+    XMarkIcon
+} from '@heroicons/react/24/outline'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
+
+const products = [
+    { name: 'Analytics', href: '#', },
+    { name: 'Engagement', href: '#', },
+    { name: 'Security', href: '#', },
+    { name: 'Integrations', href: '#', },
+    { name: 'Automations', href: '#', },
+]
+const callsToAction = [
+    { name: 'Watch demo', href: '#', },
+    { name: 'Contact sales', href: '#', },
+]
+
 
 const Header = () => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
     return (
-        <>
-            <header class="body-font text-gray-800 w-full h-24 md:h-32 flex items-center fixed z-10 top-0 {{ url()->current() != request()->root() ? 'notHome' : null }}">
-                <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
-                    <div class="font-bold text-2xl flex items-center logo">
-                        <a href="{{ url('/') }}">
+        <header className="bg-white">
+            <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+                <div className="flex lg:flex-1">
+                    <Link href="#" className="-m-1.5 p-1.5">
+                        <span className="sr-only">Your Company</span>
+                        <Image
+                            alt=""
+                            src={logo}
+                            className="h-12 w-auto"
+                        />
+                    </Link>
+                </div>
+                <div className="flex lg:hidden">
+                    <button
+                        type="button"
+                        onClick={() => setMobileMenuOpen(true)}
+                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                    >
+                        <span className="sr-only">Open main menu</span>
+                        <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+                    </button>
+                </div>
+                <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+                    <Popover className="relative">
+                        <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+                            Product
+                            <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
+                        </PopoverButton>
+
+                        <PopoverPanel
+                            transition
+                            className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                        >
+                            <div className="p-4">
+                                {products.map((item) => (
+                                    <div
+                                        key={item.name}
+                                        className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                                    >
+                                        <div className="flex-auto">
+                                            <Link href={item.href} className="block font-semibold text-gray-900">
+                                                {item.name}
+                                                <span className="absolute inset-0" />
+                                            </Link>
+
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                                {callsToAction.map((item) => (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                                    >
+                                    </Link>
+                                ))}
+                            </div>
+                        </PopoverPanel>
+                    </Popover>
+
+                    <Link href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                        Features
+                    </Link>
+                    <Link href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                        Marketplace
+                    </Link>
+                    <Link href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                        Company
+                    </Link>
+                </PopoverGroup>
+                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <Link href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                        Log in <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                </div>
+            </nav>
+            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+                <div className="fixed inset-0 z-10" />
+                <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div className="flex items-center justify-between">
+                        <Link href="#" className="-m-1.5 p-1.5">
+                            <span className="sr-only">Your Company</span>
                             <Image
+                                alt=""
                                 src={logo}
-                                alt="logo"
-                                class="h-12 mr-8" />
-                        </a>
-                    </div>
-                    <div class="flex items-center">
-                        <nav class="text-base hidden lg:flex items-center">
-                            <a href="{{ url('/') }}" class="py-2 px-3 flex text-indigo-500">HOME</a>
-                            <li class="relative dropdown list-none hover:text-indigo-500" id="button_moderate">
-                                <a class="py-2 px-3 flex items-center" href="javascript:void(false)">
-                                    SERVICES
-                                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                                <ul class="absolute right-0 top-0 min-w-6 mt-10 py-2 rounded-lg shadow-lg bg-white z-10 hidden dropdown-hover:block">
-                                    <svg class="block fill-current text-white w-4 h-4 absolute right-0 top-0 mr-3 -mt-3 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                    </svg>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service1') }}" class="px-4 py-2 flex">
-                                            Clipping Path Services
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service2') }}" class="px-4 py-2 flex">
-                                            Color Variants & Color Correction
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service3') }}" class="px-4 py-2 flex">
-                                            Drop Shadow Services
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service4') }}" class="px-4 py-2 flex">
-                                            Ghost Mannequin Services
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service5') }}" class="px-4 py-2 flex">
-                                            Image Masking Services
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service6') }}" class="px-4 py-2 flex">
-                                            Jewelry Photo Editing Services
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service7') }}" class="px-4 py-2 flex">
-                                            Photo Retouching Services
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service8') }}" class="px-4 py-2 flex">
-                                            Product Photo-editing Services
-                                        </a>
-                                    </li>
-                                    <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                                        <a href="{{ route('service.service9') }}" class="px-4 py-2 flex">
-                                            Real Estate Photo Editing Services(HDR)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <a href="{{ route('price') }}" class="py-2 px-3 flex hover:text-indigo-500">PRICING</a>
-                            <a href="{{ route('user.quote') }}" class="py-2 px-3 flex hover:text-indigo-500">GET QUOTE</a>
-                            <a href="{{ route('contact') }}" class="py-2 px-3 flex hover:text-indigo-500">CONTACT US</a>
-                            {/* @if(Route::has('login'))
-                            @auth */}
-                            <Link href="{{ isAdmin() ? url('/admin') : url('/user') }}" class="py-2 px-3 flex hover:text-indigo-500"></Link>
-                            {/* @else */}
-                            <a href="{{ route('login') }}" class="py-2 px-3 flex hover:text-indigo-500"></a>
-                            {/* @endauth
-                            @endif */}
-                        </nav>
-                        <button class="lg:hidden focus:outline-none" id="toggle-btn">
-                            <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                                className="h-12 w-auto"
+                            />
+                        </Link>
+                        <button
+                            type="button"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                        >
+                            <span className="sr-only">Close menu</span>
+                            <XMarkIcon aria-hidden="true" className="h-6 w-6" />
                         </button>
                     </div>
-                </div>
-            </header>
-            {/* {{-- mobile menu start --}} */}
-            <nav class="text-base lg:hidden items-center text-gray-800 body-font overflow-hidden" id="mobile-menu">
-                <a href="{{ url('/') }}" class="py-2 px-3 flex text-indigo-500">HOME</a>
-                <li class="relative mobile-dropdown list-none hover:text-indigo-500">
-                    <a class="py-2 px-3 flex items-center" href="javascript:;">
-                        SERVICES
-                        <svg class="h-4 w-4 ml-auto" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                    <ul class="sub-dropdown border-t border-b text-xs hidden">
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service1') }}" class="px-3 py-2 flex">
-                                Clipping Path Services
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service2') }}" class="px-3 py-2 flex">
-                                Color Variants & Color Correction
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service3') }}" class="px-3 py-2 flex">
-                                Drop Shadow Services
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service4') }}" class="px-3 py-2 flex">
-                                Ghost Mannequin Services
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service5') }}" class="px-3 py-2 flex">
-                                Image Masking Services
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service6') }}" class="px-3 py-2 flex">
-                                Jewelry Photo Editing Services
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service7') }}" class="px-3 py-2 flex">
-                                Photo Retouching Services
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service8') }}" class="px-3 py-2 flex">
-                                Product Photo-editing Services
-                            </a>
-                        </li>
-                        <li class="whitespace-no-wrap text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-                            <a href="{{ route('service.service9') }}" class="px-3 py-2 flex">
-                                Real Estate Photo Editing Services(HDR)
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <a href="{{ route('price') }}" class="py-2 px-3 flex hover:text-indigo-500">PRICING</a>
-                <a href="{{ route('user.quote') }}" class="py-2 px-3 flex hover:text-indigo-500">GET QUOTE</a>
-                <a href="{{ route('contact') }}" class="py-2 px-3 flex hover:text-indigo-500">CONTACT US</a>
-                {/* @if(Route::has('login')) */}
-                {/* @auth */}
-                <a href="{{ isAdmin() ? url('/admin') : url('/user') }}" class="py-2 px-3 flex hover:text-indigo-500"></a>
-                {/* @else */}
-                <a href="{{ route('login') }}" class="py-2 px-3 flex hover:text-indigo-500"></a>
-                {/* @endauth
-                @endif */}
-            </nav>
-            <div id="mobile-menu-overlay" class="hidden"></div>
-            {/* {{-- mobile menu end --}} */}
-        </>
+                    <div className="mt-6 flow-root">
+                        <div className="-my-6 divide-y divide-gray-500/10">
+                            <div className="space-y-2 py-6">
+                                <Disclosure as="div" className="-mx-3">
+                                    <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                        Product
+                                        <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
+                                    </DisclosureButton>
+                                    <DisclosurePanel className="mt-2 space-y-2">
+                                        {[...products, ...callsToAction].map((item) => (
+                                            <DisclosureButton
+                                                key={item.name}
+                                                as="a"
+                                                href={item.href}
+                                                className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                            >
+                                                {item.name}
+                                            </DisclosureButton>
+                                        ))}
+                                    </DisclosurePanel>
+                                </Disclosure>
+                                <Link
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                >
+                                    Features
+                                </Link>
+                                <Link
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                >
+                                    Marketplace
+                                </Link>
+                                <Link
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                >
+                                    Company
+                                </Link>
+                            </div>
+                            <div className="py-6">
+                                <Link
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                >
+                                    Log in
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </DialogPanel>
+            </Dialog>
+        </header>
     );
 };
 

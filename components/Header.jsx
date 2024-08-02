@@ -23,7 +23,7 @@ import { useState } from 'react'
 
 const services = [
     { name: 'Clipping Path Services', href: '/clipping-path', },
-    { name: 'Color Variants & Color Correction', href: '#', },
+    { name: 'Color Variants & Color Correction', href: '/color-variants', },
     { name: 'Drop Shadow Services', href: '#', },
     { name: 'Ghost Mannequin Services', href: '#', },
     { name: 'Image Masking Services', href: '#', },
@@ -35,7 +35,7 @@ const services = [
 
 
 const Header = () => {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
         <header>

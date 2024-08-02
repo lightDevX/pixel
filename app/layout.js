@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <main className=" container mx-auto p-6 lg:px-8">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

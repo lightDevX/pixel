@@ -38,7 +38,7 @@ const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <header>
+        <header className='bg-slate-400'>
             <nav aria-label="Global" className="container mx-auto flex items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
                     <Link href="/" className=" p-1.5">

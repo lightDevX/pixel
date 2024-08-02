@@ -16,10 +16,10 @@ const ClippingPath = () => {
         <>
 
             <section className="text-gray-700 body-font">
-                <div className="container px-6 md:px-12 pt-24 pb-10 md:pt-32 mx-auto flex flex-col items-center relative">
+                <div className="container px-6 md:px-12 pt-12 pb-10 md:pt-12 mx-auto flex flex-col items-center relative">
                     <div className="flex flex-col text-center w-full mb-20">
                         <h1 className="text-3xl sm:text-4xl font-medium title-font text-gray-800">Clipping Path Services</h1>
-                        <div className="flex mt-6 justify-center">
+                        <div className="flex mt-4 justify-center">
                             <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
                         </div>
                     </div>

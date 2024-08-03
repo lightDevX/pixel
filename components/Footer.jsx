@@ -6,7 +6,7 @@ const Footer = () => {
             <footer className="text-gray-400 bg-gray-800 border-t border-gray-700 body-font overflow-hidden">
                 <div className="container px-6 md:px-12 py-24 md:py-32 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-no-wrap flex-wrap flex-col">
                     <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-                        <Link className="flex title-font font-medium items-center md:justify-start justify-center text-white">
+                        <Link href="#" className="flex title-font font-medium items-center md:justify-start justify-center text-white">
                             <span className="w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 mr-4"></span>
                             <span className="text-xl">PixeLSense Park</span>
                         </Link>
@@ -30,8 +30,8 @@ const Footer = () => {
                         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
                             <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">SUPPORT</h2>
                             <nav className="list-none mb-10">
-                                <li><Link className="text-gray-500 hover:text-white">Help & Support</Link></li>
-                                <li><Link className="text-gray-500 hover:text-white">Trust & Safety</Link></li>
+                                <li><a className="text-gray-500 hover:text-white">Help & Support</a></li>
+                                <li><a className="text-gray-500 hover:text-white">Trust & Safety</a></li>
                             </nav>
                         </div>
                         <div className="lg:w-1/4 md:w-2/4 w-full px-4">

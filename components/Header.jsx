@@ -22,15 +22,15 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 const services = [
-    { name: 'Clipping Path Services', href: '/clipping-path', },
-    { name: 'Color Variants & Color Correction', href: '/color-variants', },
-    { name: 'Drop Shadow Services', href: '#', },
-    { name: 'Ghost Mannequin Services', href: '#', },
-    { name: 'Image Masking Services', href: '#', },
-    { name: 'Jewelry Photo Editing Services', href: '#', },
-    { name: 'Photo Retouching Services', href: '#', },
-    { name: 'Product Photo-editing Services', href: '#', },
-    { name: 'Real Estate Photo Editing Services(HDR)', href: '#', },
+    { name: 'Clipping Path Services', href: '/clipping-path' },
+    { name: 'Color Variants & Color Correction', href: '/color-variants' },
+    { name: 'Drop Shadow Services', href: '/drop-shadow' },
+    { name: 'Ghost Mannequin Services', href: '/ghost-mannequin' },
+    { name: 'Image Masking Services', href: '/image-masking' },
+    { name: 'Jewelry Photo Editing Services', href: '/jewelry-retouching' },
+    { name: 'Photo Retouching Services', href: '/photo-retouching' },
+    { name: 'Product Photo-editing Services', href: '/product-photo-editing' },
+    { name: 'Real Estate Photo Editing Services(HDR)', href: '/real-estate-photo-editing' },
 ]
 
 
@@ -93,18 +93,18 @@ const Header = () => {
                         </PopoverPanel>
                     </Popover>
 
-                    <Link href="#" className="text-sm font-semibold leading-6 text-white">
+                    <Link href="/pricing" className="text-sm font-semibold leading-6 text-white">
                         Pricing
                     </Link>
-                    <Link href="#" className="text-sm font-semibold leading-6 text-white">
+                    <Link href="/get-quote" className="text-sm font-semibold leading-6 text-white">
                         Get Quote
                     </Link>
-                    <Link href="#" className="text-sm font-semibold leading-6 text-white">
+                    <Link href="/contact" className="text-sm font-semibold leading-6 text-white">
                         Contact
                     </Link>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link href="#" className="text-sm font-semibold leading-6 text-white">
+                    <Link href="/login" className="text-sm font-semibold leading-6 text-white">
                         Log in <span aria-hidden="true">&rarr;</span>
                     </Link>
                 </div>
@@ -113,7 +113,7 @@ const Header = () => {
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <Link href="#" className="-m-1.5 p-1.5">
+                        <Link href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <Image
                                 alt=""
@@ -152,19 +152,19 @@ const Header = () => {
                                     </DisclosurePanel>
                                 </Disclosure>
                                 <Link
-                                    href="#"
+                                    href="/"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
                                 >
                                     Features
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
                                 >
                                     Marketplace
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
                                 >
                                     Company
@@ -172,7 +172,7 @@ const Header = () => {
                             </div>
                             <div className="py-6">
                                 <Link
-                                    href="#"
+                                    href="/"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50"
                                 >
                                     Log in

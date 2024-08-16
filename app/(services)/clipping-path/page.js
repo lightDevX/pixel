@@ -14,7 +14,6 @@ import Image from "next/image";
 const ClippingPath = () => {
     return (
         <>
-
             <section className="text-gray-700 body-font">
                 <div className="container px-6 md:px-12 pt-12 pb-10 md:pt-12 mx-auto flex flex-col items-center relative">
                     <div className="flex flex-col text-center w-full mb-20">
@@ -310,8 +309,8 @@ const ClippingPath = () => {
                         </div>
                     </div>
                     <div className="flex lg:space-x-4 justify-center w-full flex-wrap mx-auto px-8 lg:px-0 -m-4">
-                        <input name="quantity" min="0" className="form-input w-full lg:w-auto rounded-full border-gray-700 mb-4" placeholder="Quantity*" type="number" />
-                        <select name="service" className="form-select w-full lg:w-auto rounded-full border-gray-700 mb-4">
+                        <input name="quantity" min="0" className="form-input w-full lg:w-auto rounded-full border-gray-700 mb-4 px-3" placeholder="Quantity*" type="number" />
+                        <select name="service" className="form-select w-full lg:w-auto rounded-full border-gray-700 mb-4 px-3">
                             <option selected disabled className="text-gray-400">Choose a Select*</option>
                             <option value="1">Clipping Path Services</option>
                             <option value="1">Color Variants & Color Correction</option>
@@ -323,7 +322,7 @@ const ClippingPath = () => {
                             <option value="1">Photo Retouching Services</option>
                             <option value="1">Real Estate Photo Editing Services(HDR)</option>
                         </select>
-                        <input name="email" className="form-input w-full lg:w-auto rounded-full border-gray-700 mb-4" placeholder="Email*" type="email" />
+                        <input name="email" className="form-input w-full lg:w-auto rounded-full border-gray-700 mb-4 px-3" placeholder="Email*" type="email" />
                         <a href="{{ route('user.quote') }}" className="btn-brand focus:outline-none w-full lg:w-auto rounded-full text-lg text-center whitespace-no-wrap mb-4">Get Your Quote</a>
                     </div>
                 </div>
